@@ -63,7 +63,7 @@
     - email :: mark.mwangi1@student.moringaschool.com
     - phone :: +254770614345
 
-    - email :: mailto:brian.cherus@student.moringaschool.com
+    - email :: brian.cherus@student.moringaschool.com
     - phone :: +254720560979
 
 
