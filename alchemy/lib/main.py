@@ -2,7 +2,7 @@ from config import *
 
 # CRUD OPERATIONS FOR THE USER
 
-# ----CRUD Operations for Sneaker
+# ----Update for Sneaker
 def update_sneaker_price(sneaker_id, new_price):
     sneaker = session.query(Sneaker).get(sneaker_id)
     if sneaker:
@@ -20,7 +20,7 @@ def update_sneaker_availability(sneaker_id, new_availability):
         session.commit()
     return sneaker
 
-# ----CRUD Operations for Customer
+# ----Update for Customer
 def update_customer_info(customer_id, updated_info):
     customer = session.query(Customer).get(customer_id)
     if customer:
