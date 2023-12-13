@@ -1,5 +1,7 @@
 from config import *
 
+# CRUD OPERATIONS FOR THE USER
+
 '''READ OPERATIONS'''
 
 # Retrieve details about a specific sneaker using its ID
