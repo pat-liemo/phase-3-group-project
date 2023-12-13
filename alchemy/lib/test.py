@@ -1,4 +1,32 @@
-from main import update_sneaker_price, update_sneaker_availability, get_sneaker, update_customer_info, get_customer, get_sneaker, get_customer, delete_customer, delete_sneaker, get_reviews, get_unavailable_sneakers
+from main import update_sneaker_price, update_sneaker_availability, get_sneaker, update_customer_info, get_customer, get_sneaker, get_customer, delete_customer, delete_sneaker, get_reviews, get_unavailable_sneakers, create_customer, create_sneaker, create_review
+
+ # CREATE
+# ====== CREATE CUSTOMER
+print(">>>>>>>>>>>> CREATE CUSTOMER OPERATION <<<<<<<<<<<")
+print("***** Creating new customer *****")
+customer = create_customer("John", "Doe", "john.doe@example.com", 1234567890)
+if customer:
+    print(f"Created Customer => Name: {customer.first_name} {customer.last_name}, ID: {customer.id}, Email: {customer.email}, Contact: {customer.contact}")
+
+# ====== CREATE SNEAKER
+print()
+print(">>>>>>>>>>>> CREATE SNEAKER OPERATION <<<<<<<<<<<")
+print("***** Creating new sneaker *****")
+sneaker = create_sneaker("New balance", 10, "Black", 150, True)
+if sneaker:
+    print(f"Created Sneaker => Brand: {sneaker.brand}, ID: {sneaker.id}, Size: {sneaker.size}, Colour: {sneaker.colour}, Price: {sneaker.price}, Is Available: {sneaker.is_available}")
+
+# ====== CREATE REVIEW
+print()
+print(">>>>>>>>>>>> CREATE REVIEW OPERATION <<<<<<<<<<<")
+customer_id_for_review = 1  
+sneaker_id_for_review = 1  
+
+print("***** Creating new review *****")
+review = create_review(customer_id_for_review, sneaker_id_for_review, 4)
+if review:
+    print(f"Created Review => ID: {review.id}, Customer ID: {review.customer_id}, Sneaker ID: {review.sneaker_id}, Rating: {review.rating}")
+
 
 # READ!!!
 # Individual IDs for sneaker and customer details

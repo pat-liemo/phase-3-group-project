@@ -2,8 +2,8 @@ from config import *
 
 # CRUD OPERATIONS FOR THE USER
 
-# Create of CRUD
-
+ # CREATE!!!
+# create new customer
 def create_customer(first_name, last_name, email, contact):
     
     if not isinstance(contact, int) or not (1000000000 <= contact <= 9999999999):
@@ -17,9 +17,9 @@ def create_customer(first_name, last_name, email, contact):
     
     session.add(customer)
     session.commit()
-    
-    return customer
 
+    return customer
+# create new sneaker
 def create_sneaker(brand, size, colour, price, is_available):
     
     if not isinstance(size, int) or not (1 <= size <= 15):
@@ -35,7 +35,7 @@ def create_sneaker(brand, size, colour, price, is_available):
     session.commit()
     
     return sneaker
-
+# create new review
 def create_review(customer_id, sneaker_id, rating):
     customer = session.query(Customer).get(customer_id)
     sneaker = session.query(Sneaker).get(sneaker_id)
@@ -56,6 +56,7 @@ def create_review(customer_id, sneaker_id, rating):
     session.commit()
     
     return review
+
 
  # UPDATE!!!
 # ----update sneaker price
