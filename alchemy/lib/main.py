@@ -3,6 +3,7 @@ from config import *
 # CRUD OPERATIONS FOR THE USER
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Create of CRUD
 
 def create_customer(first_name, last_name, email, contact):
@@ -59,6 +60,9 @@ def create_review(customer_id, sneaker_id, rating):
     return review
 =======
 # ----CRUD Operations for Sneaker
+=======
+# ----Update for Sneaker
+>>>>>>> origin/brian
 def update_sneaker_price(sneaker_id, new_price):
     sneaker = session.query(Sneaker).get(sneaker_id)
     if sneaker:
@@ -76,7 +80,7 @@ def update_sneaker_availability(sneaker_id, new_availability):
         session.commit()
     return sneaker
 
-# ----CRUD Operations for Customer
+# ----Update for Customer
 def update_customer_info(customer_id, updated_info):
     customer = session.query(Customer).get(customer_id)
     if customer:
