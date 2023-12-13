@@ -1,5 +1,7 @@
 from config import *
 
+'''READ OPERATIONS'''
+
 # Retrieve details about a specific sneaker using its ID
 def get_sneaker(sneaker_id):
     return session.query(Sneaker).get(sneaker_id)
@@ -24,11 +26,12 @@ def get_reviews(customer_id=None, sneaker_id=None):
 def get_unavailable_sneakers():
     return session.query(Sneaker).filter(Sneaker.is_available == False).all()
 
+'''DELETE OPERATIONS'''
+
 # Delete a specific sneaker by providing its ID
 def delete_sneaker(sneaker_id):
     sneaker = session.query(Sneaker).get(sneaker_id)
     if sneaker:
-     # Delete the sneaker from the database
         session.delete(sneaker)
         session.commit()
     return sneaker
@@ -37,7 +40,7 @@ def delete_sneaker(sneaker_id):
 def delete_customer(customer_id):
     customer = session.query(Customer).get(customer_id)
     if customer:
-        # Delete the customer from the database
+        session.query(Review).filter(Review.customer_id == customer_id).delete()
         session.delete(customer)
         session.commit()
     return customer
