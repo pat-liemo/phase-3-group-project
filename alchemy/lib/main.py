@@ -36,3 +36,23 @@ def create_sneaker(brand, size, colour, price, is_available):
     
     return sneaker
 
+def create_review(customer_id, sneaker_id, rating):
+    customer = session.query(Customer).get(customer_id)
+    sneaker = session.query(Sneaker).get(sneaker_id)
+    
+    if customer is None:
+        print("Customer not found")
+        return None
+    elif sneaker is None:
+        print("Sneaker not found")
+        return None
+    elif not isinstance(rating, int) or not (1 <= rating <= 5):
+        print("You can only enter a rating of between 1 to 5")
+        return None
+    
+    review = Review(customer_id = customer_id, sneaker_id = sneaker_id, rating = rating)
+    
+    session.add(review)
+    session.commit()
+    
+    return review
