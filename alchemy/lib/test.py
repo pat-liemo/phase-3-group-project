@@ -38,7 +38,7 @@ retrieved_customer = get_customer(customer_id)
 if retrieved_customer:
     print(f"Retrieved Customer => Name: {retrieved_customer.first_name} {retrieved_customer.last_name}, ID: {retrieved_customer.id}, Email: {retrieved_customer.email}")
 
-        # update the customer info
+        # update customer info
     print("***** Update Customer Info *****")
     updated_customer_info = {'first_name': 'Brian', 'last_name': 'Cherus', 'email': 'Brian@gmail.com', 'contact': 987654321}
     update_customer_info(customer_id, updated_info=updated_customer_info)
