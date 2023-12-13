@@ -20,3 +20,19 @@ def create_customer(first_name, last_name, email, contact):
     
     return customer
 
+def create_sneaker(brand, size, colour, price, is_available):
+    
+    if not isinstance(size, int) or not (1 <= size <= 15):
+        print("Kindly enter a valid shoe size between 1 to 15")
+        return None
+    elif not isinstance(price, int) or not (50 <= price <= 5000):
+        print("Kindly enter a valid sneaker price")
+        return None
+    
+    sneaker = Sneaker(brand = brand, size = size, colour = colour, price = price, is_available = is_available)
+    
+    session.add(sneaker)
+    session.commit()
+    
+    return sneaker
+
