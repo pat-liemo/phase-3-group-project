@@ -1,10 +1,64 @@
-from main import (
-    update_sneaker_price,
-    update_sneaker_availability,
-    get_sneaker,
-    update_customer_info,
-    get_customer
-)
+from main import update_sneaker_price, update_sneaker_availability, get_sneaker, update_customer_info, get_customer, get_sneaker, get_customer, delete_customer, delete_sneaker, get_reviews, get_unavailable_sneakers, create_customer, create_sneaker, create_review
+
+ # CREATE
+# ====== CREATE CUSTOMER
+print(">>>>>>>>>>>> CREATE CUSTOMER OPERATION <<<<<<<<<<<")
+print("***** Creating new customer *****")
+customer = create_customer("John", "Doe", "john.doe@example.com", 1234567890)
+if customer:
+    print(f"Created Customer => Name: {customer.first_name} {customer.last_name}, ID: {customer.id}, Email: {customer.email}, Contact: {customer.contact}")
+
+# ====== CREATE SNEAKER
+print()
+print(">>>>>>>>>>>> CREATE SNEAKER OPERATION <<<<<<<<<<<")
+print("***** Creating new sneaker *****")
+sneaker = create_sneaker("New balance", 10, "Black", 150, True)
+if sneaker:
+    print(f"Created Sneaker => Brand: {sneaker.brand}, ID: {sneaker.id}, Size: {sneaker.size}, Colour: {sneaker.colour}, Price: {sneaker.price}, Is Available: {sneaker.is_available}")
+
+# ====== CREATE REVIEW
+print()
+print(">>>>>>>>>>>> CREATE REVIEW OPERATION <<<<<<<<<<<")
+customer_id_for_review = 1  
+sneaker_id_for_review = 1  
+
+print("***** Creating new review *****")
+review = create_review(customer_id_for_review, sneaker_id_for_review, 4)
+if review:
+    print(f"Created Review => ID: {review.id}, Customer ID: {review.customer_id}, Sneaker ID: {review.sneaker_id}, Rating: {review.rating}")
+
+
+# READ!!!
+# Individual IDs for sneaker and customer details
+sneaker_id = 15
+customer_id = 14
+print()
+print("***** Fetching sneaker details by ID *****")
+retrieved_sneaker = get_sneaker(sneaker_id)
+print(f"Retrieved Sneaker => Brand: {retrieved_sneaker.brand}, ID: {retrieved_sneaker.id}, Price: {retrieved_sneaker.price}")
+
+print("***** Fetching customer details by ID *****")
+retrieved_customer = get_customer(customer_id)
+print(f"Retrieved Customer => Name: {retrieved_customer.first_name} {retrieved_customer.last_name}, ID: {retrieved_customer.id}, Email: {retrieved_customer.email}")
+
+# Fetch reviews
+customer_id_for_reviews = 17
+sneaker_id_for_reviews = 18
+
+print("***** Fetching reviews by Customer ID *****")
+reviews_by_customer = get_reviews(customer_id=customer_id_for_reviews)
+print(f"Reviews by Customer ID {customer_id_for_reviews}: {[review.rating for review in reviews_by_customer]}")
+
+print("***** Fetching reviews by Sneaker ID *****")
+reviews_by_sneaker = get_reviews(sneaker_id=sneaker_id_for_reviews)
+print(f"Reviews by Sneaker ID {sneaker_id_for_reviews}: {[review.rating for review in reviews_by_sneaker]}")
+
+# Fetch unavailable sneakers
+print("***** Fetching unavailable sneakers *****")
+unavailable_sneakers = get_unavailable_sneakers()
+print(f"Unavailable Sneakers: {[sneaker.brand for sneaker in unavailable_sneakers]}")
+
+
 
 # ===== SNEAKER UPDATE
 print(">>>>>>>>>>>> SNEAKER UPDATE OPERATIONS <<<<<<<<<<<")
@@ -42,4 +96,19 @@ if retrieved_customer:
     print("***** Update Customer Info *****")
     updated_customer_info = {'first_name': 'Brian', 'last_name': 'Cherus', 'email': 'Brian@gmail.com', 'contact': 987654321}
     update_customer_info(customer_id, updated_info=updated_customer_info)
+
+
+    
+  # DELETE TEST
+# Individual IDs for deleting customer/sneaker by id
+customer_id_for_delete = 3
+sneaker_id_for_delete = 8
+print("***** Delete customer by id *****")
+deleted_customer = delete_customer(customer_id_for_delete)
+print(f"Deleted Customer => Name: {deleted_customer.first_name} {deleted_customer.last_name}, ID: {deleted_customer.id}")
+
+print("***** Delete sneaker by id *****")
+deleted_sneaker = delete_sneaker(sneaker_id_for_delete)
+print(f"Deleted Sneaker => Brand: {deleted_sneaker.brand}, ID: {deleted_sneaker.id}")
+
 

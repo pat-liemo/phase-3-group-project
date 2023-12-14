@@ -2,11 +2,8 @@ from config import *
 
 # CRUD OPERATIONS FOR THE USER
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-# Create of CRUD
-
+ # CREATE!!!
+# create new customer
 def create_customer(first_name, last_name, email, contact):
     
     if not isinstance(contact, int) or not (1000000000 <= contact <= 9999999999):
@@ -20,9 +17,9 @@ def create_customer(first_name, last_name, email, contact):
     
     session.add(customer)
     session.commit()
-    
-    return customer
 
+    return customer
+# create new sneaker
 def create_sneaker(brand, size, colour, price, is_available):
     
     if not isinstance(size, int) or not (1 <= size <= 15):
@@ -38,7 +35,7 @@ def create_sneaker(brand, size, colour, price, is_available):
     session.commit()
     
     return sneaker
-
+# create new review
 def create_review(customer_id, sneaker_id, rating):
     customer = session.query(Customer).get(customer_id)
     sneaker = session.query(Sneaker).get(sneaker_id)
@@ -59,11 +56,10 @@ def create_review(customer_id, sneaker_id, rating):
     session.commit()
     
     return review
-=======
-# ----CRUD Operations for Sneaker
-=======
-# ----Update for Sneaker
->>>>>>> origin/brian
+
+
+ # UPDATE!!!
+# ----update sneaker price
 def update_sneaker_price(sneaker_id, new_price):
     sneaker = session.query(Sneaker).get(sneaker_id)
     if sneaker:
@@ -73,7 +69,7 @@ def update_sneaker_price(sneaker_id, new_price):
 
 def get_sneaker(sneaker_id):
     return session.query(Sneaker).get(sneaker_id)
-
+# update sneaker availabilty
 def update_sneaker_availability(sneaker_id, new_availability):
     sneaker = session.query(Sneaker).get(sneaker_id)
     if sneaker:
@@ -81,7 +77,7 @@ def update_sneaker_availability(sneaker_id, new_availability):
         session.commit()
     return sneaker
 
-# ----Update for Customer
+# ----update customer info
 def update_customer_info(customer_id, updated_info):
     customer = session.query(Customer).get(customer_id)
     if customer:
@@ -92,45 +88,37 @@ def update_customer_info(customer_id, updated_info):
 
 def get_customer(customer_id):
     return session.query(Customer).get(customer_id)
->>>>>>> origin/brian
-=======
-'''READ OPERATIONS'''
 
-# Retrieve details about a specific sneaker using its ID
+ # READ!!!
+# read sneaker details
 def get_sneaker(sneaker_id):
     return session.query(Sneaker).get(sneaker_id)
-
-# Retrieve details about a specific customer using their ID
+# read customer details
 def get_customer(customer_id):
     return session.query(Customer).get(customer_id)
-
-# Fetch all reviews associated with a particular customer/sneaker or all reviews
+# read review associated with a particular customer/sneaker
 def get_reviews(customer_id=None, sneaker_id=None):
     if customer_id:
-        # Fetch reviews based on customer ID
         return session.query(Review).filter(Review.customer_id == customer_id).all()
     elif sneaker_id:
-        # Fetch reviews based on sneaker ID
         return session.query(Review).filter(Review.sneaker_id == sneaker_id).all()
     else:
-        # Fetch all reviews if no specific IDs provided
         return session.query(Review).all()
-
-# Fetch all unavailable sneakers for restocking
+# read unavailable sneakers
 def get_unavailable_sneakers():
     return session.query(Sneaker).filter(Sneaker.is_available == False).all()
 
-'''DELETE OPERATIONS'''
 
-# Delete a specific sneaker by providing its ID
+ # DELETE!!!
+# delete sneaker by id
 def delete_sneaker(sneaker_id):
     sneaker = session.query(Sneaker).get(sneaker_id)
     if sneaker:
+        session.query(Review).filter(Review.sneaker_id == sneaker_id).delete()
         session.delete(sneaker)
         session.commit()
     return sneaker
-
-# Delete a specific customer by providing their ID
+# delete customer by id
 def delete_customer(customer_id):
     customer = session.query(Customer).get(customer_id)
     if customer:
@@ -138,4 +126,4 @@ def delete_customer(customer_id):
         session.delete(customer)
         session.commit()
     return customer
->>>>>>> origin/mark/crud-ops
+
