@@ -1,8 +1,8 @@
 
-# Phase-3-group-project, 12/12/2023
+# Phase-3-Group-Project, 12/12/2023
 
 ## SNEAKER SHOP MANAGEMENT SYSTEM
-cd
+
 ## Authors
 
 By:
@@ -86,15 +86,15 @@ It provides the necessary features for the users to interact with the sneaker in
 
 ## Support and contact details
 
-- name  :: Pat Aloo
+1. Pat Aloo
 - email :: aloemo77@gmail.com
 - phone :: +254791488881
 
-- name  :: Mark Mwangi
+2. Mark Mwangi
 - email :: mark.mwangi1@student.moringaschool.com
 - phone :: +254770614345
 
-- name  :: Brian Cherus
+3. Brian Cherus
 - email :: brian.cherus@student.moringaschool.com
 - phone :: +254720560979
 
